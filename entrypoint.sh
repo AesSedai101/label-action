@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-if [[ -z "$GITHUB_TOKEN" ]]; then
+if [[ -z "$INPUT_GITHUB_TOKEN" ]]; then
     echo "Set the GITHUB_TOKEN env variable."
     exit 1
 fi
@@ -16,10 +16,10 @@ if [[ -z "$GITHUB_EVENT_PATH" ]]; then
     exit 1
 fi
 
-addLabel=$ADD_LABEL
-if [[ -n "$LABEL_NAME" ]]; then
+addLabel=$INPUT_ADD_LABEL
+if [[ -n "$INPUT_LABEL_NAME" ]]; then
     echo "Warning: Plase define the ADD_LABEL variable instead of the deprecated LABEL_NAME."
-    addLabel=$LABEL_NAME
+    addLabel=$INPUT_LABEL_NAME
 fi
 
 if [[ -z "$addLabel" ]]; then
